@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Weather Atlas — A2</title>
+
+  <link rel="stylesheet" href="/styles.css" />
+
+  <!-- Leaflet (map) -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <div class="dot"></div>
+      <div>
+        <div class="title">Weather Atlas</div>
+        <div class="subtitle">tiny backend dashboard</div>
+      </div>
+    </div>
+
+    <form id="searchForm" class="search">
+      <input id="cityInput" type="text" placeholder="Type a city (e.g., Astana)" autocomplete="off" />
+      <button type="submit">Scan</button>
+      <button id="demoBtn" type="button" class="ghost">Demo</button>
+    </form>
+  </header>
+
+  <main class="grid">
+    <section class="card hero">
+      <div class="heroRow">
+        <div>
+          <div id="place" class="place">—</div>
+          <div id="meta" class="meta">Waiting for a request…</div>
+        </div>
+        <div class="tempBlock">
+          <div id="temp" class="temp">—°</div>
+          <div id="desc" class="desc">—</div>
+        </div>
+      </div>
+
+      <div class="heroDetails">
+        <div class="pill"><span>Feels</span><b id="feels">—</b></div>
+        <div class="pill"><span>Humidity</span><b id="hum">—</b></div>
+        <div class="pill"><span>Pressure</span><b id="press">—</b></div>
+        <div class="pill"><span>Wind</span><b id="wind">—</b></div>
+        <div class="pill"><span>Rain 3h</span><b id="rain">—</b></div>
+        <div class="pill"><span>Coords</span><b id="coords">—</b></div>
+      </div>
+
+      <div id="errorBox" class="errorBox hidden"></div>
+    </section>
+
+    <section class="card mapCard">
+      <div class="cardHead">
+        <h3>Map</h3>
+        <div id="mapHint" class="hint">—</div>
+      </div>
+      <div id="map" class="map"></div>
+    </section>
+
+    <section class="card countryCard">
+      <div class="cardHead">
+        <h3>Country snapshot</h3>
+        <div id="flag" class="flag">🏳️</div>
+      </div>
+      <div class="kv">
+        <div><span>Name</span><b id="cName">—</b></div>
+        <div><span>Capital</span><b id="cCap">—</b></div>
+        <div><span>Region</span><b id="cReg">—</b></div>
+        <div><span>Population</span><b id="cPop">—</b></div>
+        <div><span>Languages</span><b id="cLang">—</b></div>
+        <div><span>Currency</span><b id="cCur">—</b></div>
+      </div>
+    </section>
+
+    <section class="card currencyCard">
+      <div class="cardHead">
+        <h3>Quick rate</h3>
+        <div class="hint">server-side only</div>
+      </div>
+      <div id="rateLine" class="rateLine">—</div>
+      <div class="note">Rate comes from /api/currency</div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="/core.js"></script>
+</body>
+</html>
